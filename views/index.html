@@ -1,17 +1,26 @@
-<div>
-    {{ if .Facts }}
+
+<div class="container">
+    {{if .Facts}}
         {{ range .Facts }}
-        <div>
-            <p>{{ .Question }}</p>
-            <p>{{ .Answer }}</p>
-        </div>
+        <a href="/fact/{{ .ID }}">
+            <div class="fact-item">
+                <div class="question-wrapper">
+                    <p class="question">{{ .Question }}</p>
+                    <div class="actions">
+                        {{template "icon-arrow-right" .}}
+                    </div>
+                </div>
+            </div>
+        </a>
+
         {{ end }}
-    {{ else }}
-        <div>
+    {{else}}
+        <div class="no-facts">
             <p>No facts yet.</p>
-            <p><a href="/fact">Add new</a></p>
+            <p><a href="/fact">Add now</a></p>
         </div>
-    {{ end }}
+    {{end}}
 </div>
+
 
 <script src="/javascript/app.js"></script>

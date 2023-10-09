@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/Maxibanex/prueba_paralelo.git/database"
+	"github.com/Maxibanex/prueba_paralelo.git/handlers"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/template/html/v2"
 )
@@ -19,6 +20,9 @@ func main() {
 	setupRoutes(app)
 
 	app.Static("/", "./public")
+
+	// Set up 404 page
+	app.Use(handlers.NotFound)
 
 	app.Listen(":3000")
 }
